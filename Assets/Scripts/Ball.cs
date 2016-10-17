@@ -4,7 +4,7 @@ using System.Collections;
 public class Ball : MonoBehaviour 
 {
 
-	public Paddle paddle;
+	private Paddle paddle;
 
 	private Vector3 paddleToBallVector;
 
@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
 
 	void Start ()
 	{
+		paddle = GameObject.FindObjectOfType<Paddle>();
 		// Get the distance between the paddle and ball by obtaining the difference in position
 		paddleToBallVector = this.transform.position - paddle.transform.position;
 	}
