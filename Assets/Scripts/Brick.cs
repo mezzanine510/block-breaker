@@ -6,6 +6,8 @@ public class Brick : MonoBehaviour
 
 	private LevelManager levelManager;
 
+	public Sprite[] hitSprites;
+
 	public int maxHits;
 
 	private int timesHit;
@@ -31,6 +33,20 @@ public class Brick : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+		else
+		{
+			LoadSprites ();
+		}
+	}
+
+	void LoadSprites ()
+	{
+		/* First, set the spriteIndex value to 0. Second, call the sprite renderer and grab
+		   the index value of the currently loaded sprite. Third, make it equal to the spriteIndex
+		   within the hitSprites array. */
+		int spriteIndex = 0;
+		this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		spriteIndex++;
 	}
 
 	// TODO Remove this method once we can actually win!
