@@ -24,7 +24,7 @@ GameObject:
   - 114: {fileID: 114000010539527042}
   m_Layer: 0
   m_Name: 2 hit brick
-  m_TagString: Untagged
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSprites:
   - {fileID: 21300006, guid: 6e8acb4e60448d54c818dece09d62455, type: 3}
-  maxHits: 2
 --- !u!212 &212000014260884484
 SpriteRenderer:
   m_ObjectHideFlags: 1
