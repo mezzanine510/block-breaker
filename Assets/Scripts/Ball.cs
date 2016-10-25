@@ -37,4 +37,12 @@ public class Ball : MonoBehaviour
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D ballBounce)
+	{
+		if (hasStarted == true)
+		{
+			GetComponent<AudioSource>().Play();
+		}
+	}
+
 }
