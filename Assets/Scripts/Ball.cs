@@ -27,7 +27,7 @@ public class Ball : MonoBehaviour
 		}
 
 		// If left mouse is clicked, declare the game has started and launch the ball.
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && hasStarted == false)
 		{
 			hasStarted = true;
 
@@ -39,9 +39,13 @@ public class Ball : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D ballBounce)
 	{
+		Vector2 tweak = new Vector2(Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
+		
 		if (hasStarted == true)
 		{
 			GetComponent<AudioSource>().Play();
+			this.GetComponent<Rigidbody2D>().velocity += tweak;
+			print (this.GetComponent<Rigidbody2D>().velocity);
 		}
 	}
 

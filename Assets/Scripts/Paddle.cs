@@ -3,12 +3,37 @@ using System.Collections;
 
 public class Paddle : MonoBehaviour {
 
+	public bool autoPlay = false;
+
+	private Ball ball;
+
 	void Start () 
 	{
-		
+		ball = GameObject.FindObjectOfType<Ball>();
 	}
 	
 	void Update () 
+	{
+		if (autoPlay == false)
+		{
+			MoveWithMouse();
+		}
+		else
+		{
+			AutoPlay ();
+		}
+			
+	}
+	
+	void AutoPlay ()
+	{
+		Vector3 paddlePosition = new Vector3 (0.5f, this.transform.position.y, 0f);
+		Vector3 ballPosition = ball.transform.position; 
+		paddlePosition.x = Mathf.Clamp(ballPosition.x, 0.5f, 15.5f);
+		this.transform.position = paddlePosition;
+	}
+
+	void MoveWithMouse ()
 	{
 		// Create a local new Vector3 variable, which initially aligns to the left side 
 		// of the screen, while keeping the current y-coord you started with

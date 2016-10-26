@@ -51,9 +51,10 @@ public class Brick : MonoBehaviour
 		if (timesHit >= maxHits)
 		{
 			breakableCount--;
-			levelManager.BrickDestroyed();
-			AudioSource.PlayClipAtPoint (crack, transform.position);
+			Debug.Log(breakableCount);
+			AudioSource.PlayClipAtPoint (crack, transform.position, 0.7f);
 			Destroy(gameObject);
+			levelManager.BrickDestroyed();
 		}
 
 		else
@@ -70,12 +71,6 @@ public class Brick : MonoBehaviour
 		this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
 
 		spriteIndex++;
-	}
-
-	// TODO Remove this method once we can actually win!
-	void SimulateWin () 
-	{
-		levelManager.LoadNextLevel();
 	}
 
 }
