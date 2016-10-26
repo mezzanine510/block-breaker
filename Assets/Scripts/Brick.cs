@@ -7,6 +7,7 @@ public class Brick : MonoBehaviour
 	public AudioClip crack;
 	public Sprite[] hitSprites;
 	public static int breakableCount = 0;
+	public GameObject smoke;
 
 	private LevelManager levelManager;
 	private int timesHit;
@@ -51,21 +52,24 @@ public class Brick : MonoBehaviour
 		if (timesHit >= maxHits)
 		{
 			breakableCount--;
-			Debug.Log(breakableCount);
 			AudioSource.PlayClipAtPoint (crack, transform.position, 0.7f);
+			PuffSmoke();
 			Destroy(gameObject);
 			levelManager.BrickDestroyed();
 		}
-
 		else
 		{
 			LoadSprites ();
 		}
 	}
 
-	/* First, set the spriteIndex value to 0. Second, if sprite exists within the hitSprites
-	array, call the sprite renderer and grab the index value of the currently loaded
-	sprite. Third, make it equal to the spriteIndex within the hitSprites array. */
+	void PuffSmoke ()
+	{
+		smoke.GetComponent<ParticleSystem> ().startColor = this.GetComponent<SpriteRenderer> ().color;
+		Instantiate (smoke, transform.position, Quaternion.identity);
+	}
+
+	/* First, set the spriteIndex value to 0. Second, if sprite exists within the hitSprites array, call the sprite renderer and grab the index value of the currently loaded sprite. Third, make it equal to the spriteIndex within the hitSprites array. */
 	void LoadSprites ()
 	{
 		this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];

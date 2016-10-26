@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011472571070}
   - 212: {fileID: 212000010814498390}
-  - 61: {fileID: 61000011116475192}
   - 50: {fileID: 50000013340266660}
   - 114: {fileID: 114000013865146100}
+  - 60: {fileID: 60000013890358356}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Untagged
@@ -60,8 +60,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61000011116475192
-BoxCollider2D:
+--- !u!60 &60000013890358356
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,8 +72,12 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.3203125}
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.16015625}
+      - {x: -0.5, y: -0.16015625}
+      - {x: 0.5, y: -0.16015625}
+      - {x: 0.5, y: 0.16015625}
 --- !u!114 &114000013865146100
 MonoBehaviour:
   m_ObjectHideFlags: 1
